@@ -45,11 +45,9 @@ public class ConsumerKata {
         String url="http://94.198.50.185:7081/api/users";
 
         ResponseEntity<String> response = restTemplate.getForEntity(url,String.class);
-        String responseHeader = response.getHeaders().getFirst("set-cookie");
+        String sessionID = response.getHeaders().getFirst("set-cookie");
 
         System.out.println(response.getBody());
-        String sessionID=responseHeader.substring(0,43);
-
         System.out.println(sessionID);
 
         HttpHeaders headers=new HttpHeaders();
